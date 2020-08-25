@@ -46,7 +46,7 @@ pipeline{
                 //sh 'git clone https://$git_username:git_password@github.com/abhishekmha/ArgoCD_CD.git'
                 
                 dir("ArgoCD_CD"){
-                    sh "cd ./e2e && kustomize edit set image helloworld=gcr.io/cybage-devops/spring-boot-hello-world:${env.GIT_COMMIT}"
+                    sh "cd ./e2e && kustomize edit set image helloworld=gcr.io/cybage-devops/spring-boot-hello-world:latest"
                 }
             }
         } 
