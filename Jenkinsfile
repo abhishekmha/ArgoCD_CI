@@ -27,7 +27,7 @@ pipeline{
         stage('docker build'){
             steps{
                 script { 
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                    dockerImage = docker.build registry + "latest" 
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline{
             steps{
                 withCredentials([file(credentialsId: 'gcr_creds', variable: 'GC_KEY')]){
                     sh 'cat key.json | docker login -u _json_key --password-stdin https://gcr.io'
-                    sh 'docker push gcr.io/cybage-devops/spring-boot-hello-world:$BUILD_NUMBER'
+                    sh 'docker push gcr.io/cybage-devops/spring-boot-hello-world:latest'
                 }
                 
             }
@@ -46,7 +46,7 @@ pipeline{
                 //sh 'git clone https://$git_username:git_password@github.com/abhishekmha/ArgoCD_CD.git'
                 
                 dir("ArgoCD_CD"){
-                    sh "cd ./e2e && kustomize edit set image helloworld=gcr.io/cybage-devops/spring-boot-hello-world:$BUILD_NUMBER"
+                    sh "cd ./e2e && kustomize edit set image helloworld=gcr.io/cybage-devops/spring-boot-hello-world:latest"
                 }
             }
         } 
