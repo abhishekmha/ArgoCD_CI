@@ -41,6 +41,12 @@ pipeline{
             }
         }
         
+        stage('deploy e2e'){
+            steps{
+                sh 'git clone https://$git_username:git_password@github.com/abhishekmha/ArgoCD_CD.git'
+            }
+        }
+        
         
         
         
