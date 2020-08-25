@@ -35,7 +35,7 @@ pipeline{
             steps{
                 withCredentials([file(credentialsId: 'gcr_creds', variable: 'GC_KEY')]){
                     sh 'cat key.json | docker login -u _json_key --password-stdin https://gcr.io'
-                    sh 'docker push gcr.io/cybage-devops/spring-boot-hello-world:latest'
+                    sh 'docker push gcr.io/cybage-devops/spring-boot-hello-world'
                 }
                 
             }
