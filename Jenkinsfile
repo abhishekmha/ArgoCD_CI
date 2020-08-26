@@ -44,7 +44,7 @@ pipeline{
         stage('deploy e2e'){
             steps{
                 //sh 'rm -rf ArgoCD_CD'
-                //sh 'git clone https://$git_username:git_password@github.com/abhishekmha/ArgoCD_CD.git'
+                sh 'git clone https://$git_username:git_password@github.com/abhishekmha/ArgoCD_CD.git'
                 
                 dir("ArgoCD_CD"){
                     sh "cd ./e2e && kustomize edit set image gcr.io/cybage-devops/spring-boot-hello-world:$BUILD_NUMBER"
