@@ -49,9 +49,9 @@ pipeline{
                 dir("ArgoCD_CD_ShellScript"){
 	            sh '''
 		      cd ./yamls 
-                      SERVICE_NAME=`grep -i image deployment.yaml`
-		      backend_svc_name=`echo $SERVICE_NAME| rev | cut -d":" -f1  | rev`
-		      sed -i "s/$backend_svc_name/${BUILD_NUMBER}/g" deployment.yaml
+                      image_name=`grep -i image deployment.yaml`
+		      build_number=`echo $image_name| rev | cut -d":" -f1  | rev`
+		      sed -i "s/$build_number/${BUILD_NUMBER}/g" deployment.yaml
 		      git add .
 		      git commit -m "published new version ${BUILD_NUMBER}"
 		      git push https://${git_username}:${git_password}@github.com/abhishekmha/ArgoCD_CD_ShellScript.git master
