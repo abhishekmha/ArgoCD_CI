@@ -47,8 +47,14 @@ pipeline{
                 sh 'git clone https://$git_username:git_password@github.com/abhishekmha/ArgoCD_CD.git'
                 
                 dir("ArgoCD_CD"){
-                    sh "cd ./e2e && kustomize edit set image gcr.io/cybage-devops/spring-boot-hello-world:$BUILD_NUMBER"
-                    sh "git commit -am 'Publish new version' && git push || echo 'no changes'"
+	            sh '''
+		      cd ./yamls 
+                      SERVICE_NAME=`grep -i image deployment.yaml`
+		      backend_svc_name=`echo $SERVICE_NAME| rev | cut -d":" -f1  | rev`
+		      sed -i "s/$backend_svc_name/${BUILD_NUMBER}/g" deployment.yaml
+		    '''
+                    //sh "cd ./yamls && sed -i 's/world:*/world:34/g'"
+                    //sh "git commit -am 'Publish new version' && git push || echo 'no changes'"
                 }
             }
         } 
