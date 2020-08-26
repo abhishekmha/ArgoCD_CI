@@ -52,7 +52,12 @@ pipeline{
                       SERVICE_NAME=`grep -i image deployment.yaml`
 		      backend_svc_name=`echo $SERVICE_NAME| rev | cut -d":" -f1  | rev`
 		      sed -i "s/$backend_svc_name/${BUILD_NUMBER}/g" deployment.yaml
+		      git add .
+		      git commit -m "published new version ${BUILD_NUMBER}"
+		      git push https://$git_username:git_password@github.com/abhishekmha/ArgoCD_CD.git master
+		      
 		    '''
+			
                     //sh "cd ./yamls && sed -i 's/world:*/world:34/g'"
                     //sh "git commit -am 'Publish new version' && git push || echo 'no changes'"
                 }
