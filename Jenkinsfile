@@ -48,6 +48,7 @@ pipeline{
                 
                 dir("ArgoCD_CD"){
                     sh "cd ./e2e && kustomize edit set image gcr.io/cybage-devops/spring-boot-hello-world:$BUILD_NUMBER"
+                    sh "git commit -am 'Publish new version' && git push || echo 'no changes'"
                 }
             }
         } 
