@@ -10,7 +10,7 @@ public class HelloWorldController {
 
 	@RequestMapping(value = { "/hello" }, method = RequestMethod.GET)
 	public String sayHelloWorld() {
-		String responseMsg = new StringBuilder("<h1>").append("Hey...Hello argocd !!").append("</h1>").toString();
+		String responseMsg = new StringBuilder("<h1>").append("Hey...Hello world !!").append("</h1>").toString();
 		return responseMsg;
 	}
 
