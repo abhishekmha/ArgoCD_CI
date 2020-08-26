@@ -46,7 +46,7 @@ pipeline{
                 //sh 'rm -rf ArgoCD_CD'
 		    sh 'git clone https://${git_username}:${git_password}@github.com/abhishekmha/ArgoCD_CD_ShellScript.git'
                 
-                dir("ArgoCD_CD"){
+                dir("ArgoCD_CD_ShellScript"){
 	            sh '''
 		      cd ./yamls 
                       SERVICE_NAME=`grep -i image deployment.yaml`
