@@ -54,7 +54,7 @@ pipeline{
 		      sed -i "s/$backend_svc_name/${BUILD_NUMBER}/g" deployment.yaml
 		      git add .
 		      git commit -m "published new version ${BUILD_NUMBER}"
-		      echo "git push https://'$git_username:git_password'@github.com/abhishekmha/ArgoCD_CD.git master"
+		      echo "git push https://'$git_username:$git_password'@github.com/abhishekmha/ArgoCD_CD.git master"
 		      
 		    '''
 			
