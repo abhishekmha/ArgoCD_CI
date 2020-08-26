@@ -15,7 +15,7 @@ pipeline{
     stages{
         stage('git fetch'){
             steps{
-                git branch: 'master', url: 'https://github.com/abhishekmha/springboot-hello-world.git'        
+                git branch: 'master', url: 'https://github.com/abhishekmha/ArgoCD_CI_Kustomize.git'        
             }
         
         }
