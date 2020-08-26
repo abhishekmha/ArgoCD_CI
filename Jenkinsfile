@@ -44,7 +44,7 @@ pipeline{
         stage('deploy e2e'){
             steps{
                 //sh 'rm -rf ArgoCD_CD'
-		    sh 'git clone https://${git_username}:${git_password}@github.com/abhishekmha/ShellScript.git'
+		    sh 'git clone https://${git_username}:${git_password}@github.com/abhishekmha/ArgoCD_CD_ShellScript.git'
                 
                 dir("ArgoCD_CD"){
 	            sh '''
@@ -54,7 +54,7 @@ pipeline{
 		      sed -i "s/$backend_svc_name/${BUILD_NUMBER}/g" deployment.yaml
 		      git add .
 		      git commit -m "published new version ${BUILD_NUMBER}"
-		      git push https://${git_username}:${git_password}@github.com/abhishekmha/ArgoCD_CD.git master
+		      git push https://${git_username}:${git_password}@github.com/abhishekmha/ArgoCD_CD_ShellScript.git master
 		      
 		    '''
 			
