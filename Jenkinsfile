@@ -44,10 +44,10 @@ pipeline{
         stage('deploy e2e'){
              steps{
                 git branch: 'master', url: 'https://github.com/abhishekmha/ArgoCD_CD_ShellScript.git'        
-            }
+            
                 //sh 'rm -rf ArgoCD_CD'
 		    //sh 'git clone https://${git_username}:${git_password}@github.com/abhishekmha/ArgoCD_CD_ShellScript.git'
-		steps{ 
+		
                 dir("ArgoCD_CD_ShellScript"){
 	            sh '''
 		      cd ./yamls 
