@@ -41,7 +41,7 @@ pipeline{
             }
         }
         
-        stage('deploy e2e'){
+        stage('deploy to ArgoCD'){
              steps{
                 git branch: 'master', url: 'https://github.com/abhishekmha/ArgoCD_CD_ShellScript.git'        
             
